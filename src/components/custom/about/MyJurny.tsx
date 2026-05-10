@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'motion/react';
 import { Code2, Server, Rocket } from 'lucide-react';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 type JourneyItem = {
   year: string;
@@ -31,63 +31,23 @@ const journey: JourneyItem[] = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-} as const;
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' as const },
-  },
-};
-
 export function MyJurny() {
   return (
     <section className="relative w-full py-24">
       <div className="mx-auto max-w-4xl px-6">
-        <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ margin: '-80px' }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.p
-            className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ margin: '-80px' }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-          >
+        <ScrollReveal direction="up">
+        <div className="mb-16 text-center">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
             My Journey
-          </motion.p>
-          <motion.h2
-            className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ margin: '-80px' }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          </p>
+          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             From first line of code <br className="hidden sm:block" />
             to full stack craft
-          </motion.h2>
-        </motion.div>
+          </h2>
+        </div>
+        </ScrollReveal>
 
-        <motion.ol
-          className="relative"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ margin: '-60px' }}
-        >
+        <ol className="relative">
           {/* vertical line */}
           <div
             aria-hidden
@@ -98,9 +58,8 @@ export function MyJurny() {
             const Icon = item.icon;
             const isLeft = i % 2 === 0;
             return (
-              <motion.li
+              <li
                 key={item.year}
-                variants={itemVariants}
                 className={`relative mb-12 last:mb-0 pl-16 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-10 ${
                   isLeft ? '' : 'sm:[&>*:first-child]:col-start-2'
                 }`}
@@ -112,6 +71,7 @@ export function MyJurny() {
                   </div>
                 </div>
 
+                <ScrollReveal direction="up" delay={i * 150}>
                 <div
                   className={`group rounded-2xl border border-border bg-slate-950 p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md ${
                     isLeft ? 'sm:mr-10 sm:text-right' : 'sm:ml-10'
@@ -125,10 +85,11 @@ export function MyJurny() {
                     {item.description}
                   </p>
                 </div>
-              </motion.li>
+                </ScrollReveal>
+              </li>
             );
           })}
-        </motion.ol>
+        </ol>
       </div>
     </section>
   );

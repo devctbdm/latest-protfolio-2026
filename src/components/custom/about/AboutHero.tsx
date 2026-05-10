@@ -1,61 +1,32 @@
 'use client';
 
-import { motion } from 'motion/react';
 import { User, MapPin, Briefcase, CheckCircle2 } from 'lucide-react';
-import { AnimatedBackground } from '@/components/Animation';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export function AboutHero() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-16 sm:py-24 mt-10">
-      <AnimatedBackground />
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
         {/* Left: intro text */}
-        <motion.div
-          className="space-y-6"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ margin: '-80px' }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-        >
-          <motion.span
-            className="inline-flex items-center rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ margin: '-80px' }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+        <ScrollReveal direction="up">
+        <div className="space-y-6">
+          <span className="inline-flex items-center rounded-full border border-border bg-purple-400/20 px-3 py-1 text-xs font-medium text-muted-foreground">
             About me
-          </motion.span>
-          <motion.h1
-            className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ margin: '-80px' }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          </span>
+          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             I&apos;m <span className="text-primary">Minarul</span>, a Full Stack Developer
-          </motion.h1>
-          <motion.p
-            className="text-lg leading-relaxed text-muted-foreground"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ margin: '-80px' }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
+          </h1>
+          <p className="text-lg leading-relaxed text-muted-foreground">
             I love building scalable web applications and solving real-world problems with clean and
             efficient code.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
+        </ScrollReveal>
 
         {/* Right: info card + image */}
         <div className="relative lg:pr-32 xl:pr-40">
-          <motion.div
-            className="relative overflow-hidden rounded-2xl border border-border bg-linear-to-br from-primary/10 via-accent/10 to-secondary/20 shadow-sm"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ margin: '-80px' }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
+          <ScrollReveal direction="up" delay={100}>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-linear-to-br from-primary/10 via-accent/10 to-secondary/20 shadow-sm">
             <div className="aspect-4/3 w-full">
               <img
                 src="/ceo.jpg"
@@ -64,15 +35,11 @@ export function AboutHero() {
                 loading="lazy"
               />
             </div>
-          </motion.div>
+          </div>
+          </ScrollReveal>
 
-          <motion.div
-            className="mt-6 rounded-2xl border border-border bg-slate-950 p-5 shadow-lg lg:absolute lg:right-0 lg:top-1/2 lg:mt-0 lg:w-60 lg:-translate-y-1/2 xl:w-60"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-          >
+          <ScrollReveal direction="right" delay={200}>
+          <div className="mt-6 rounded-2xl border border-border bg-slate-950 p-5 shadow-lg lg:absolute lg:right-0 lg:top-1/2 lg:mt-0 lg:w-60 lg:-translate-y-1/2 xl:w-60">
             <div className="grid gap-4">
               <InfoRow icon={<User className="h-4 w-4" />} label="Name" value="Minarul Islam" />
               <InfoRow
@@ -101,7 +68,8 @@ export function AboutHero() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

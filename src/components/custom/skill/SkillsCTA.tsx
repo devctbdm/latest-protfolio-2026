@@ -1,6 +1,6 @@
 'use client';
-import { motion } from 'motion/react';
 import { Quote, Sparkles, ArrowRight, Mail, Rocket } from 'lucide-react';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export function SkillsCTA() {
   return (
@@ -14,12 +14,8 @@ export function SkillsCTA() {
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-2">
         {/* LEFT — quote */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <ScrollReveal direction="left">
+        <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-purple-300">
             <Sparkles className="h-3.5 w-3.5" />
             Mindset
@@ -35,23 +31,15 @@ export function SkillsCTA() {
           <p className="mt-6 font-mono text-base text-emerald-300">
             &mdash; keep building, keep growing.
           </p>
-        </motion.div>
+        </div>
+        </ScrollReveal>
 
         {/* RIGHT — CTA card */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative overflow-hidden rounded-2xl border border-slate-800 bg-linear-to-br from-slate-900 via-slate-900/80 to-slate-950 p-8"
-        >
-          <motion.div
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/15 ring-1 ring-emerald-500/30"
-          >
+        <ScrollReveal direction="right" delay={150}>
+        <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-linear-to-br from-slate-900 via-slate-900/80 to-slate-950 p-8">
+          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/15 ring-1 ring-emerald-500/30">
             <Rocket className="h-6 w-6 text-emerald-400" />
-          </motion.div>
+          </div>
 
           <h3 className="text-2xl font-bold text-white sm:text-3xl">
             Let&apos;s build something great together.
@@ -62,28 +50,25 @@ export function SkillsCTA() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <motion.a
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
+            <a
               href="/contact"
               className="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/20 transition-shadow hover:shadow-emerald-500/40"
             >
               <Mail className="h-4 w-4" />
               Get in Touch
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
+            </a>
+            <a
               href="/projects"
               className="inline-flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-slate-700"
             >
               View Projects
               <ArrowRight className="h-4 w-4" />
-            </motion.a>
+            </a>
           </div>
 
           <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_20%,rgba(16,185,129,0.12),transparent_60%)]" />
-        </motion.div>
+        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

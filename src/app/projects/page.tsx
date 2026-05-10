@@ -154,8 +154,7 @@ function ProjectsGrid({ projects }: { projects: typeof projectsData }) {
               key={`${project.title}-${index}`}
               layout
               initial={{ opacity: 0, scale: 0.85, y: 40 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ amount: 0.3, once: true }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.75, y: -20 }}
               transition={{
                 type: 'spring',
