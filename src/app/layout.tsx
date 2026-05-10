@@ -6,6 +6,7 @@ import React from 'react';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -45,7 +46,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <Navbar />
-          <main>{children}</main>
+          <TooltipProvider>
+            {children}
+          </TooltipProvider>
           <Footer />
         </ThemeProvider>
       </body>
