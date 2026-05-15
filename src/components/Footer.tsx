@@ -4,9 +4,16 @@ import { motion } from 'motion/react';
 import Link from 'next/link';
 import { socialData } from '@/data';
 import Logo from './Logo';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+
+  // Hide navbar on dashboard routes
+  if (pathname.startsWith('/dashboard')) {
+    return null;
+  }
 
   return (
     <footer className="relative mt-auto border-t border-border/50 overflow-hidden bg-slate-950">

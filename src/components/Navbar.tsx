@@ -20,6 +20,11 @@ const Navbar = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
+  // Hide navbar on dashboard routes
+  if (pathname.startsWith('/dashboard')) {
+    return null;
+  }
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
